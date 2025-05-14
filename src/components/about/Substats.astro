@@ -7,6 +7,25 @@ interface SubstatsItem {
   icon: (typeof socialLinks)[number]
   color?: string
   link?: string
+  id: string // 使用 id 替换统计数
+}
+
+type Props = {
+  stats: SubstatsItem[]
+}
+
+const { stats } = Astro.props as Props
+---
+
+<!-- ---
+import { socialLinks, type iconsType } from 'astro-pure/types'
+import { Icon } from 'astro-pure/user'
+
+interface SubstatsItem {
+  platform: string
+  icon: (typeof socialLinks)[number]
+  color?: string
+  link?: string
   text: string
   api?: string
   count?: number
@@ -70,4 +89,27 @@ await Promise.all(stats.map(fetchCount))
     target='_blank'
     rel='noopener noreferrer'>Substats</a
   >
+</div> -->
+<div class='grid grid-cols-1 gap-3 rounded-xl border p-2 sm:grid-cols-2 sm:p-3'>
+  {
+    stats.map(({ link, platform, icon, color, id }) => (
+      <a
+        class='group text-muted-foreground no-underline'
+        href={link}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <div class='flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 transition-all hover:border-border hover:bg-muted'>
+          {icon && <Icon name={icon as iconsType} color={color} />}
+          <div class='flex-1 text-foreground transition-colors group-hover:text-primary'>
+            {platform}
+          </div>
+          <div class='flex items-center gap-1.5'>
+            <samp>{id}</samp>
+          </div>
+        </div>
+      </a>
+    ))
+  }
 </div>
+<div class='mt-2 text-right text-sm'>Don't bomb me please :P</div>
