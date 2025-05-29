@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets'
 
-import { Quote } from 'astro-pure/advanced'
+// import { Quote } from 'astro-pure/advanced'
 import { PostPreview } from 'astro-pure/components/pages'
 import { getBlogCollection, sortMDByDate } from 'astro-pure/server'
 import { Button, Card, Icon, Label } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
-import ProjectCard from '@/components/home/ProjectCard.astro'
+// import ProjectCard from '@/components/home/ProjectCard.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import avatar from '@/assets/avatar.png'
@@ -216,6 +216,6 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         <SkillLayout title='Others' skills={others} />
       </Section>
     </div>
-    <Quote class='mt-12' />
+    <!-- <Quote class='mt-12' /> -->
   </main>
 </PageLayout>
