@@ -311,3 +311,21 @@ C++ 多线程 python多线程
 
 
 C++ 11 14 17
+
+
+## 常见ACM输入输出处理
+```C++
+vector<vector<int>> res;
+string line;
+
+// getline 从输入流中读取一行输入，直到遇到换行符 比如1 2 3 4 则line = "1 2 3 4"
+while (getline(cin, line)) {
+    stringstream ss(line);  //将line转成流对象
+    vector<int> row;
+    int num;
+    while (ss >> num) {     //每当ss中提取到数字时
+        row.push_back(num);
+    }
+    result.push_back(row);
+}
+```
